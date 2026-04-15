@@ -1,0 +1,11 @@
+import java.util.*;
+
+public class Hotel {
+    static boolean[] rooms = new boolean[5];
+
+    public static void main(String[] args) {
+        rooms[0] = true;
+        for(int i=0;i<rooms.length;i++)
+            System.out.println("Room "+i+" "+(rooms[i]?"Booked":"Free"));
+    }
+}
