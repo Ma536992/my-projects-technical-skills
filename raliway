@@ -1,0 +1,11 @@
+public class Railway {
+    public static void main(String[] args) {
+        int seats = 5;
+        if(seats > 0) {
+            seats--;
+            System.out.println("Booked");
+        } else {
+            System.out.println("Full");
+        }
+    }
+}
