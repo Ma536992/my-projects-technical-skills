@@ -1,0 +1,76 @@
+import java.util.*;
+
+class Account {
+    int accNo;
+    String name;
+    double balance;
+
+    Account(int accNo, String name, double balance) {
+        this.accNo = accNo;
+        this.name = name;
+        this.balance = balance;
+    }
+}
+
+public class BankSystem {
+    static ArrayList<Account> list = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\n1.Create 2.Deposit 3.Withdraw 4.View 5.Exit");
+            int ch = sc.nextInt();
+
+            switch (ch) {
+                case 1: create(); break;
+                case 2: deposit(); break;
+                case 3: withdraw(); break;
+                case 4: view(); break;
+                case 5: System.exit(0);
+            }
+        }
+    }
+
+    static void create() {
+        System.out.print("AccNo Name Balance: ");
+        int acc = sc.nextInt();
+        String name = sc.next();
+        double bal = sc.nextDouble();
+        list.add(new Account(acc, name, bal));
+    }
+
+    static Account find(int accNo) {
+        for (Account a : list)
+            if (a.accNo == accNo) return a;
+        return null;
+    }
+
+    static void deposit() {
+        System.out.print("AccNo Amount: ");
+        int acc = sc.nextInt();
+        double amt = sc.nextDouble();
+
+        Account a = find(acc);
+        if (a != null) {
+            a.balance += amt;
+            System.out.println("Deposited");
+        } else System.out.println("Account not found");
+    }
+
+    static void withdraw() {
+        System.out.print("AccNo Amount: ");
+        int acc = sc.nextInt();
+        double amt = sc.nextDouble();
+
+        Account a = find(acc);
+        if (a != null && a.balance >= amt) {
+            a.balance -= amt;
+            System.out.println("Withdrawn");
+        } else System.out.println("Insufficient balance / not found");
+    }
+
+    static void view() {
+        for (Account a : list)
+            System.out.println(a.accNo + " " + a.name + " " + a.balance);
+    }
+}
