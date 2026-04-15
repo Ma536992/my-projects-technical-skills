@@ -1,0 +1,19 @@
+class Employee {
+    String name;
+    double salary;
+
+    Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    void calculate() {
+        double tax = salary * 0.1;
+        System.out.println("Net Salary: " + (salary - tax));
+    }
+
+    public static void main(String[] args) {
+        Employee e = new Employee("John", 50000);
+        e.calculate();
+    }
+}
