@@ -1,0 +1,71 @@
+import java.util.*;
+
+class Book {
+    int id;
+    String title;
+    boolean issued;
+
+    Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+        this.issued = false;
+    }
+}
+
+public class LibrarySystem {
+    static ArrayList<Book> list = new ArrayList<>();
+    static Scanner sc = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        while (true) {
+            System.out.println("\n1.Add 2.Issue 3.Return 4.Display 5.Exit");
+            int ch = sc.nextInt();
+
+            switch (ch) {
+                case 1: add(); break;
+                case 2: issue(); break;
+                case 3: returnBook(); break;
+                case 4: display(); break;
+                case 5: System.exit(0);
+            }
+        }
+    }
+
+    static void add() {
+        System.out.print("ID Title: ");
+        int id = sc.nextInt();
+        String title = sc.next();
+        list.add(new Book(id, title));
+    }
+
+    static void issue() {
+        System.out.print("Enter Book ID: ");
+        int id = sc.nextInt();
+        for (Book b : list) {
+            if (b.id == id && !b.issued) {
+                b.issued = true;
+                System.out.println("Issued");
+                return;
+            }
+        }
+        System.out.println("Not available");
+    }
+
+    static void returnBook() {
+        System.out.print("Enter Book ID: ");
+        int id = sc.nextInt();
+        for (Book b : list) {
+            if (b.id == id && b.issued) {
+                b.issued = false;
+                System.out.println("Returned");
+                return;
+            }
+        }
+        System.out.println("Invalid");
+    }
+
+    static void display() {
+        for (Book b : list)
+            System.out.println(b.id + " " + b.title + " " + (b.issued ? "Issued" : "Available"));
+    }
+}
