@@ -1,0 +1,14 @@
+import java.util.*;
+
+public class Cart {
+    public static void main(String[] args) {
+        ArrayList<Integer> cart = new ArrayList<>();
+        cart.add(100);
+        cart.add(200);
+
+        int total = 0;
+        for(int i:cart) total += i;
+
+        System.out.println("Total: "+total);
+    }
+}
