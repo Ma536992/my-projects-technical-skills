@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class ATM {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int balance = 1000;
+
+        System.out.println("Enter amount:");
+        int amt = sc.nextInt();
+
+        if(balance >= amt) {
+            balance -= amt;
+            System.out.println("Withdrawn");
+        } else {
+            System.out.println("Insufficient");
+        }
+    }
+}
